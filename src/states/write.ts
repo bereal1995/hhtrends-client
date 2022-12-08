@@ -46,7 +46,10 @@ export const useWriteStore = create<WriteState>()(
       }))
     },
     reset() {
-      set(initialState)
+      set((state) => ({
+        ...state,
+        form: initialState.form,
+      }))
     },
   })),
 )
