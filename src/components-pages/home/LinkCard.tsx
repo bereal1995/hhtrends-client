@@ -82,6 +82,7 @@ function LinkCard({ item }: Props) {
         <h3>{title}</h3>
         <p>{body}</p>
       </StyledLink>
+      <Spacer />
       <LikeCountWrapper>
         <AnimatePresence initial={false}>
           {likes === 0 ? null : (
@@ -145,9 +146,7 @@ const Thumbnail = styled.img`
   display: block;
   width: 100%;
   max-height: 40vh;
-  ${mediaQuery(768)} {
-    aspect-ratio: 288/192;
-  }
+  aspect-ratio: 1200/630;
   margin-bottom: 16px;
   border-radius: 12px;
   box-shadow: 0 0 3px rgba(0, 0, 0, 15%);
@@ -199,6 +198,10 @@ const IconButtons = styled.div`
 const UserInfo = styled.div`
   color: ${colors.gray2};
   font-size: 14px;
+`
+
+const Spacer = styled.div`
+  flex: 1;
 `
 
 export default LinkCard
