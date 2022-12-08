@@ -12,6 +12,7 @@ interface WriteState {
   error?: AppError
   change(key: keyof WriteState['form'], value: string): void
   setError(error: AppError): void
+  reset(): void
 }
 
 const initialState: WriteState = {
@@ -21,8 +22,9 @@ const initialState: WriteState = {
     body: '',
   },
   error: undefined,
-  change: () => { },
-  setError: () => { },
+  change: () => {},
+  setError: () => {},
+  reset: () => {},
 }
 
 export const useWriteStore = create<WriteState>()(
@@ -43,13 +45,17 @@ export const useWriteStore = create<WriteState>()(
         error,
       }))
     },
+    reset() {
+      set(initialState)
+    },
   })),
 )
 
 export function useWriteActions() {
   const change = useWriteStore((state) => state.change)
   const setError = useWriteStore((state) => state.setError)
-  return { change, setError }
+  const reset = useWriteStore((state) => state.reset)
+  return { change, setError, reset }
 }
 
 export function useWriteValue() {

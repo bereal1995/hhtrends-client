@@ -5,6 +5,7 @@ import WriteFormTemplate from './WriteFormTemplate'
 import BasicLayout from '@/components-shared/layouts/BasicLayout'
 import LabelInput from '@/components-shared/system/LabelInput'
 import { useWriteActions, useWriteValue } from '@/states/write'
+import { useEffect } from 'react'
 
 function WriteContainer() {
   const router = useRouter()

@@ -22,6 +22,7 @@ function IntroContainer() {
   const { mutateAsync } = useMutation(createItem, {
     onSuccess: (item) => {
       router.push(`/items/${item.id}`)
+      actions.reset()
     },
     onError: (e) => {
       const error = extractError(e)
